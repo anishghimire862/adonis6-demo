@@ -8,6 +8,8 @@
 */
 import router from '@adonisjs/core/services/router'
 import User from '#models/user'
+import queue from "@rlanz/bull-queue/services/main";
+import SayHelloJob from "../app/jobs/say_hello_job.js";
 
 router.on('/').render('pages/home')
 
@@ -24,4 +26,5 @@ router.get('/users', async () => {
     'Available users',
     users.map((u) => u.email)
   )
+  await queue.dispatch(SayHelloJob, {}, {})
 })

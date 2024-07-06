@@ -11,12 +11,13 @@ export default class SayHelloJob extends Job {
   /**
    * Base Entry point
    */
-  async handle(payload: SayHelloJobPayload) {
+  async handle(_payload: SayHelloJobPayload) {
     console.log('Hello World from Cleavr.io')
   }
 
   /**
    * This is an optional method that gets called when the retries has exceeded and is marked failed.
    */
-  async rescue(payload: SayHelloJobPayload) {}
+  async rescue(_payload: SayHelloJobPayload) {
+  }
 }
